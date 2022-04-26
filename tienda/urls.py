@@ -21,3 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
 ]
+
+admin.site.site_title = "El jardincito"
+admin.site.site_header = "Administración de la tienda"
+admin.site.index_title = "Modulo de administración"
