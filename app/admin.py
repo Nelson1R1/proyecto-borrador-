@@ -4,7 +4,7 @@ from .models import *
 # Register your models here.
 
 class ProductoAdmin(admin.ModelAdmin):
-    list_display = ['nombre','codigo','marca','precio','stock','tipo']
+    list_display = ['nombreP','codigo','marca','precio','stock','tipo']
     search_fields = ['codigo']
     list_per_page = 4
 
