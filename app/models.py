@@ -10,12 +10,15 @@ class TipoProducto (models.Model):
         return self.tipo
 
 class Producto (models.Model):
-    codigo =  models.IntegerField
+    codigo =  models.IntegerField()
     nombreP =  models.CharField(max_length=30)
     marca =  models.CharField(max_length=30)
-    precio =  models.CharField(max_length=30)
-    stock = models.IntegerField
+    precio =  models.IntegerField()
+    stock = models.IntegerField()
     tipo =  models.ForeignKey(TipoProducto, on_delete= models.CASCADE)
+    imagen = models.ImageField(upload_to="productos", null=True)
+    descripcion = models.CharField(max_length=90)
+    fecha_ingreso= models.DateField()
 
     def __str__(self):
         return self.nombreP
@@ -27,11 +30,11 @@ class TipoUsuario (models.Model):
         return self.tipoUser
 
 class Usuario (models.Model):
-    rut = models.IntegerField
-    nombre = models.CharField
-    apellido = models.CharField
-    correo = models.CharField
-    fechaN = models.DateField
+    rut = models.IntegerField()
+    nombre = models.CharField(max_length=30)
+    apellido = models.CharField(max_length=30)
+    correo = models.CharField(max_length=50)
+    fechaN = models.DateField()
     tipo = models.ForeignKey(TipoUsuario, on_delete= models.CASCADE)
 
     def __str__(self):
@@ -40,7 +43,7 @@ class Usuario (models.Model):
 class Carrito (models.Model):
     nombreC =  models.CharField(max_length=30)
     marca =  models.CharField(max_length=30)
-    precio =  models.CharField(max_length=30)
+    precio =  models.IntegerField()
     tipo =  models.ForeignKey(TipoProducto, on_delete= models.CASCADE)
     codigo = models.ForeignKey(Producto, on_delete= models.CASCADE)
 
@@ -50,7 +53,7 @@ class Carrito (models.Model):
 class HistorialCompras (models.Model):
     nombreH = models.CharField(max_length=30)
     marca =  models.CharField(max_length=30)
-    precio =  models.CharField(max_length=30)
+    precio =  models.IntegerField()
     tipo =  models.ForeignKey(TipoProducto, on_delete= models.CASCADE)
     codigo = models.ForeignKey(Producto, on_delete= models.CASCADE)
 
